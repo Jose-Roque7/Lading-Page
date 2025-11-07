@@ -1,9 +1,9 @@
 import { Card, CardContent } from './ui/card';
 import { motion } from 'motion/react';
-import { 
-  FaClock, 
-  FaCalendarAlt, 
-  FaDollarSign, 
+import {
+  FaClock,
+  FaCalendarAlt,
+  FaDollarSign,
   FaMobileAlt,
   FaChartLine,
   FaUsers,
@@ -80,9 +80,12 @@ export function Features() {
   ];
 
   return (
-    <section id="features" className="py-20 md:py-32 bg-gray-50 relative overflow-hidden">
+    <section
+      id="features"
+      className="py-20 md:py-32 bg-gradient-to-b from-gray-900 via-gray-850 to-gray-900 relative overflow-hidden"
+    >
       {/* Background Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(50,60,70,0.2)_1px,transparent_1px),linear-gradient(to_bottom,rgba(50,60,70,0.2)_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20"></div>
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <motion.div
@@ -92,10 +95,10 @@ export function Features() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <h2 className="text-4xl md:text-5xl text-gray-900 mb-6">
+          <h2 className="text-4xl md:text-5xl text-white mb-6 font-bold">
             Todo lo que necesitas en una sola plataforma
           </h2>
-          <p className="text-xl text-gray-600">
+          <p className="text-lg md:text-xl text-gray-300">
             Funcionalidades completas para gestionar tu equipo de manera eficiente
           </p>
         </motion.div>
@@ -110,14 +113,18 @@ export function Features() {
               transition={{ duration: 0.5, delay: index * 0.05 }}
               whileHover={{ y: -8 }}
             >
-              <Card className="h-full bg-white border-2 border-gray-100 hover:border-blue-200 hover:shadow-xl transition-all duration-300 group">
+              <Card className="h-full bg-gray-800/60 border border-cyan-700/30 hover:border-cyan-400/60 hover:shadow-xl hover:shadow-cyan-500/20 transition-all duration-300 group rounded-2xl backdrop-blur-sm">
                 <CardContent className="p-6">
                   <div className="relative">
-                    <div className="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 group-hover:bg-blue-700 transition-all duration-300">
+                    <div className="w-14 h-14 bg-gradient-to-br from-cyan-500 to-indigo-500 rounded-2xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-all duration-300">
                       <feature.icon className="w-7 h-7 text-white" />
                     </div>
-                    <h3 className="text-xl text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">{feature.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                    <h3 className="text-xl text-white mb-3 font-semibold group-hover:text-cyan-400 transition-colors">
+                      {feature.title}
+                    </h3>
+                    <p className="text-gray-300 leading-relaxed">
+                      {feature.description}
+                    </p>
                   </div>
                 </CardContent>
               </Card>

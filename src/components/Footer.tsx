@@ -11,33 +11,6 @@ import {
 import { BsGrid3X3GapFill } from 'react-icons/bs';
 
 export function Footer() {
-  const footerLinks = {
-    product: [
-      { name: 'Características', href: '#features' },
-      { name: 'Precios', href: '#pricing' },
-      { name: 'Demo', href: '#' },
-      { name: 'App Móvil', href: '#' }
-    ],
-    company: [
-      { name: 'Sobre nosotros', href: '#' },
-      { name: 'Blog', href: '#' },
-      { name: 'Carreras', href: '#' },
-      { name: 'Contacto', href: '#contact' }
-    ],
-    resources: [
-      { name: 'Centro de ayuda', href: '#' },
-      { name: 'Documentación', href: '#' },
-      { name: 'API', href: '#' },
-      { name: 'Estado del sistema', href: '#' }
-    ],
-    legal: [
-      { name: 'Privacidad', href: '#' },
-      { name: 'Términos', href: '#' },
-      { name: 'RGPD', href: '#' },
-      { name: 'Cookies', href: '#' }
-    ]
-  };
-
   const socialLinks = [
     { icon: FaFacebookF, href: '#' },
     { icon: FaTwitter, href: '#' },
@@ -45,149 +18,141 @@ export function Footer() {
     { icon: FaInstagram, href: '#' }
   ];
 
+  const links = [
+    { name: 'Inicio', href: '#' },
+    { name: 'Características', href: '#features' },
+    { name: 'Precios', href: '#pricing' },
+    { name: 'Contacto', href: '#contact' },
+    { name: 'Privacidad', href: '#' },
+    { name: 'Términos', href: '#' }
+  ];
+
   return (
-    <footer className="bg-gray-900 text-gray-300">
-      <div className="container mx-auto px-4 lg:px-8 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-8 mb-12">
-          {/* Brand */}
-          <div className="lg:col-span-2">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="flex items-center gap-3 mb-4"
-            >
-              <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center text-white shadow-lg">
-                <BsGrid3X3GapFill className="w-7 h-7" />
-              </div>
-              <div>
-                <div className="text-xl text-white">
-                  RRHH Portal
-                </div>
-                <div className="text-xs text-gray-400">Gestión Inteligente</div>
-              </div>
-            </motion.div>
-            <p className="text-sm mb-6 text-gray-400 leading-relaxed">
-              La solución completa para la gestión de recursos humanos de tu empresa. 
-              Simplifica, automatiza y optimiza.
-            </p>
-            <div className="flex gap-3">
-              {socialLinks.map((social, index) => (
-                <motion.a
-                  key={index}
-                  href={social.href}
-                  whileHover={{ y: -5, scale: 1.1 }}
-                  className="w-10 h-10 bg-gray-800 hover:bg-blue-600 rounded-lg flex items-center justify-center transition-colors"
-                >
-                  <social.icon className="w-4 h-4 text-white" />
-                </motion.a>
-              ))}
-            </div>
-          </div>
+    <footer className="relative bg-gradient-to-b from-gray-950 via-gray-900 to-black text-gray-300 py-16">
+      {/* Glowing background animation */}
+      <div className="absolute inset-0">
+        <motion.div
+          animate={{
+            opacity: [0.05, 0.15, 0.05],
+            scale: [1, 1.1, 1],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+          className="absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-blue-600/30 rounded-full blur-[120px]"
+        />
+        <motion.div
+          animate={{
+            opacity: [0.08, 0.2, 0.08],
+            scale: [1.1, 0.9, 1.1],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+          className="absolute bottom-0 right-1/3 w-[600px] h-[600px] bg-cyan-400/20 rounded-full blur-[120px]"
+        />
+      </div>
 
-          {/* Links */}
-          <div>
-            <h3 className="text-white mb-4">Producto</h3>
-            <ul className="space-y-3 text-sm">
-              {footerLinks.product.map((link, index) => (
-                <li key={index}>
-                  <a 
-                    href={link.href} 
-                    className="hover:text-blue-400 transition-colors inline-block hover:translate-x-1 duration-200"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
+      {/* Main container */}
+      <div className="container mx-auto px-6 relative z-10 flex flex-col items-center">
+        {/* Logo section */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col items-center text-center mb-10"
+        >
+          <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center text-white shadow-lg shadow-blue-500/30 mb-4">
+            <BsGrid3X3GapFill className="w-7 h-7" />
           </div>
-
-          <div>
-            <h3 className="text-white mb-4">Empresa</h3>
-            <ul className="space-y-3 text-sm">
-              {footerLinks.company.map((link, index) => (
-                <li key={index}>
-                  <a 
-                    href={link.href} 
-                    className="hover:text-blue-400 transition-colors inline-block hover:translate-x-1 duration-200"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-white mb-4">Recursos</h3>
-            <ul className="space-y-3 text-sm">
-              {footerLinks.resources.map((link, index) => (
-                <li key={index}>
-                  <a 
-                    href={link.href} 
-                    className="hover:text-blue-400 transition-colors inline-block hover:translate-x-1 duration-200"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-white mb-4">Legal</h3>
-            <ul className="space-y-3 text-sm">
-              {footerLinks.legal.map((link, index) => (
-                <li key={index}>
-                  <a 
-                    href={link.href} 
-                    className="hover:text-blue-400 transition-colors inline-block hover:translate-x-1 duration-200"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        {/* Contact Info */}
-        <div className="border-t border-gray-800 pt-8 mb-8">
-          <div className="grid md:grid-cols-3 gap-6 text-sm">
-            <motion.div 
-              whileHover={{ x: 5 }}
-              className="flex items-center gap-3"
-            >
-              <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                <FaEnvelope className="w-4 h-4 text-white" />
-              </div>
-              <span>contacto@rrhhportal.es</span>
-            </motion.div>
-            <motion.div 
-              whileHover={{ x: 5 }}
-              className="flex items-center gap-3"
-            >
-              <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                <FaPhone className="w-4 h-4 text-white" />
-              </div>
-              <span>+34 900 123 456</span>
-            </motion.div>
-            <motion.div 
-              whileHover={{ x: 5 }}
-              className="flex items-center gap-3"
-            >
-              <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                <FaMapMarkerAlt className="w-4 h-4 text-white" />
-              </div>
-              <span>Madrid, España</span>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Copyright */}
-        <div className="border-t border-gray-800 pt-8 text-center">
-          <p className="text-sm text-gray-400">
-            © 2025 RRHH Portal. Todos los derechos reservados. Hecho con ❤️ en España
+          <h2 className="text-2xl md:text-3xl text-white font-semibold mb-2">
+            RRHH Portal
+          </h2>
+          <p className="text-gray-400 text-sm max-w-md">
+            Potenciando la gestión de tu equipo con tecnología moderna, diseño humano y datos inteligentes.
           </p>
+        </motion.div>
+
+        {/* Neon link ring */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.2 }}
+          className="relative mb-16"
+        >
+          <div className="absolute inset-0 rounded-full bg-blue-500/10 blur-2xl animate-pulse" />
+          <ul className="flex flex-wrap justify-center gap-6 px-8 py-6 backdrop-blur-xl border border-gray-800/60 rounded-full bg-gray-900/50 shadow-inner">
+            {links.map((link, i) => (
+              <motion.li
+                key={i}
+                whileHover={{ scale: 1.1 }}
+                className="text-sm font-medium cursor-pointer"
+              >
+                <a
+                  href={link.href}
+                  className="text-gray-300 hover:text-blue-400 transition-all duration-300"
+                >
+                  {link.name}
+                </a>
+              </motion.li>
+            ))}
+          </ul>
+        </motion.div>
+
+        {/* Social icons */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="flex gap-4 mb-12"
+        >
+          {socialLinks.map((social, index) => (
+            <motion.a
+              key={index}
+              href={social.href}
+              whileHover={{ scale: 1.2, y: -4 }}
+              className="w-11 h-11 bg-gray-800/70 hover:bg-blue-600 rounded-full flex items-center justify-center shadow-md hover:shadow-blue-600/40 transition-all duration-300 cursor-pointer"
+            >
+              <social.icon className="w-4 h-4 text-white" />
+            </motion.a>
+          ))}
+        </motion.div>
+
+        {/* Contact info in line */}
+        <div className="grid md:grid-cols-3 gap-6 max-w-4xl text-sm mb-12">
+          {[
+            { icon: FaEnvelope, text: 'contacto@rrhhportal.es' },
+            { icon: FaPhone, text: '+34 900 123 456' },
+            { icon: FaMapMarkerAlt, text: 'Madrid, España' },
+          ].map((item, i) => (
+            <motion.div
+              key={i}
+              whileHover={{ y: -3 }}
+              className="flex items-center justify-center gap-2 text-gray-400"
+            >
+              <div className="w-8 h-8 bg-blue-600/70 rounded-lg flex items-center justify-center">
+                <item.icon className="w-3.5 h-3.5 text-white" />
+              </div>
+              <span>{item.text}</span>
+            </motion.div>
+          ))}
         </div>
+
+        {/* Divider + Copyright */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          className="border-t border-gray-800/80 w-full text-center pt-8"
+        >
+          <p className="text-xs text-gray-500 tracking-wide">
+            © 2025 RRHH Portal · Diseñado con ❤️ y tecnología en España
+          </p>
+        </motion.div>
       </div>
     </footer>
   );
