@@ -6,30 +6,17 @@ import { Pricing } from './components/Pricing';
 import { Testimonials } from './components/Testimonials';
 import { CTA } from './components/CTA';
 import { Footer } from './components/Footer';
-import { Toaster } from "react-hot-toast";
 import { ThemeProvider } from './components/ui/themeMode';
+import { Toast } from './components/Toast';
 
 export default function App() {
+
+
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white relative">
       <ThemeProvider>
-        <Toaster
-          position="top-right"
-          reverseOrder={false}
-          toastOptions={{
-            duration: 4000,
-            style: {
-              borderRadius: "12px",        // bordes redondeados
-              padding: "16px 24px",        // más espacio interno
-              background: "#1e293b",       // gris oscuro
-              color: "#f1f5f9",            // texto claro
-              boxShadow: "0 4px 15px rgba(0,0,0,0.2)", // sombra suave
-              fontWeight: "500",           // un texto más visible
-              fontSize: "16px",
-            }
-          }}
-        />
         <Header />
+        <Toast />
         <Hero />
         <Features />
         <Pricing />
