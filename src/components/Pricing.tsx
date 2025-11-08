@@ -1,3 +1,6 @@
+"use client";
+
+import { useTheme } from "./ui/themeMode"; // 👈 tu hook global
 import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
 import { Badge } from './ui/badge';
@@ -5,6 +8,28 @@ import { motion } from 'motion/react';
 import { FaCheck, FaStar, FaRocket } from 'react-icons/fa';
 
 export function Pricing() {
+  const { theme } = useTheme(); // 👈 obtenemos el tema global
+
+  // Definir constantes según el tema
+  const isDarkMode = theme === "dark";
+
+  const bgColor = isDarkMode ? "bg-gray-900" : "bg-white";
+  const textColor = isDarkMode ? "text-white" : "text-gray-900";
+  const subTextColor = isDarkMode ? "text-gray-400" : "text-gray-600";
+  const accentColor = "text-blue-700"; // Azul fuerte y sólido (no luminoso)
+  const badgeBg = "bg-blue-700 border-blue-700"; // Azul fuerte para el badge
+
+  const cardBg = isDarkMode ? "bg-gray-800/90 border-gray-800" : "bg-white/80 border-gray-200";
+  const cardText = isDarkMode ? "text-gray-300" : "text-gray-700";
+
+  const hoverCardBg = "hover:border-blue-500/50 hover:shadow-xl hover:shadow-blue-500/10";
+
+  // Fondo más elegante para el card popular (con un toque oscuro pero no tan fuerte)
+  const popularCardBg = isDarkMode
+    ? "bg-gradient-to-r from-gray-800 to-gray-900 border-gray-700" // Fondo oscuro suave en dark mode
+    : "bg-white";
+  const popularCardText = isDarkMode ? "text-white" : "text-gray-900";
+
   const plans = [
     {
       name: 'Starter',
@@ -57,8 +82,9 @@ export function Pricing() {
   return (
     <section
       id="pricing"
-      className="py-20 md:py-32 bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 relative overflow-hidden"
+      className={`py-20 md:py-32 relative overflow-hidden ${bgColor}`} // Fondo según el tema
     >
+
       {/* Background subtle grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20"></div>
 
@@ -71,10 +97,10 @@ export function Pricing() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <h2 className="text-4xl md:text-5xl text-white font-bold mb-6">
+          <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${textColor}`}>
             Planes flexibles para cada empresa
           </h2>
-          <p className="text-lg md:text-xl text-gray-400">
+          <p className={`text-lg md:text-xl ${subTextColor}`}>
             Sin costos ocultos. Cancela cuando quieras. Prueba gratuita por 14 días.
           </p>
         </motion.div>
@@ -94,7 +120,7 @@ export function Pricing() {
               {/* Badge */}
               {plan.popular && (
                 <div className="absolute -top-5 left-1/2 -translate-x-1/2 z-10">
-                  <Badge className="px-4 py-2 bg-blue-600/90 text-white border-0 shadow-lg shadow-blue-500/30">
+                  <Badge className={`${badgeBg} text-white border-0 shadow-lg shadow-blue-500/30`}>
                     <FaStar className="w-3 h-3 mr-1" />
                     Más Popular
                   </Badge>
@@ -105,31 +131,39 @@ export function Pricing() {
               <Card
                 className={`h-full overflow-hidden rounded-2xl backdrop-blur-sm transition-all duration-300 ${
                   plan.popular
-                    ? 'bg-gray-800/90 border border-blue-500/40 shadow-2xl shadow-blue-500/20'
-                    : 'bg-gray-850/70 border border-gray-700/60 hover:border-blue-400/50 hover:shadow-xl hover:shadow-blue-400/10'
+                    ? `${popularCardBg} text-white border ${hoverCardBg}`
+                    : `${cardBg} ${hoverCardBg}`
                 }`}
               >
                 {/* Header */}
                 <div
                   className={`p-8 ${
                     plan.popular
-                      ? 'bg-gradient-to-r from-blue-600/90 to-indigo-600/90 text-white'
-                      : 'bg-gray-900/80 text-gray-100'
-                  }`}
+                      ? 'bg-blue-700 text-white'
+                      : `${isDarkMode ? 'bg-gray-900/80 text-gray-100' : 'bg-gray-100/80 text-gray-900'}`
+                    }`}
                 >
-                  <h3 className="text-2xl font-semibold mb-2">{plan.name}</h3>
-                  <p className="text-gray-200/80 text-sm mb-4">
+                  <h3 className="text-2xl font-semibold mb-2 text-center">{plan.name}</h3>
+                  <p className={`text-sm mb-4 text-center ${plan.popular ? 'text-white' : cardText}`}>
                     {plan.description}
                   </p>
-                  <div className="flex items-baseline gap-2">
-                    {plan.price === 'Custom' ? (
-                      <div className="text-4xl font-medium">Contactar</div>
-                    ) : (
-                      <>
-                        <span className="text-5xl font-bold">{plan.price}€</span>
-                        <span className="text-gray-200/80">/mes</span>
-                      </>
-                    )}
+                  <div className="flex items-center justify-center gap-3">
+                    <div className="flex items-center justify-center gap-3">
+                      {plan.price === 'Custom' ? (
+                        <div className="text-4xl font-medium">Contactar</div>
+                      ) : (
+                        <>
+                          <span className="text-5xl font-bold">{plan.price}€</span>
+                          <span
+                            className={`text-sm ${plan.popular ? "text-white" : isDarkMode ? "text-gray-300" : "text-gray-600"
+                              }`}
+                          >
+                            /mes
+                          </span>
+                        </>
+                      )}
+                    </div>
+
                   </div>
                 </div>
 
@@ -138,10 +172,10 @@ export function Pricing() {
                   <ul className="space-y-4">
                     {plan.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start gap-3">
-                        <div className="w-5 h-5 bg-blue-500/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 ${accentColor}/20`}>
                           <FaCheck className="w-3 h-3 text-blue-400" />
                         </div>
-                        <span className="text-gray-300">{feature}</span>
+                        <span className={`${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -152,7 +186,7 @@ export function Pricing() {
                     className={`w-full font-semibold transition-all duration-300 cursor-pointer ${
                       plan.popular
                         ? 'bg-white text-gray-900 hover:bg-gray-200 shadow-lg'
-                        : 'border border-blue-500/40 text-blue-400 hover:border-blue-400 hover:text-blue-300'
+                        : `border border-blue-500/40 text-blue-400 hover:border-blue-400 hover:text-blue-300`
                     }`}
                   >
                     <FaRocket className="mr-2" />
@@ -172,9 +206,9 @@ export function Pricing() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="text-center mt-12 text-gray-500"
+          className="text-center mt-12"
         >
-          <p className="text-lg">
+          <p className={`text-lg ${isDarkMode ? 'text-gray-500' : 'text-gray-600'}`}>
             Todos los planes incluyen actualizaciones gratuitas y soporte técnico
           </p>
         </motion.div>
