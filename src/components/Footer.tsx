@@ -30,7 +30,7 @@ export function Footer() {
   return (
     <footer className="relative bg-gradient-to-b from-gray-950 via-gray-900 to-black text-gray-300 py-16">
       {/* Glowing background animation */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 overflow-hidden">
         <motion.div
           animate={{
             opacity: [0.05, 0.15, 0.05],

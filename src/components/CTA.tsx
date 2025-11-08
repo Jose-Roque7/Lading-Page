@@ -1,14 +1,78 @@
-import { Button } from './ui/button';
-import { Input } from './ui/input';
-import { motion } from 'motion/react';
-import { FaCheck, FaRocket } from 'react-icons/fa';
-import { HiSparkles } from 'react-icons/hi';
+"use client";
+
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
+import { Button } from "./ui/button";
+import { Input } from "./ui/input";
+import { motion } from "motion/react";
+import { FaCheck, FaRocket } from "react-icons/fa";
+import { HiSparkles } from "react-icons/hi";
+import toast from "react-hot-toast";
 
 export function CTA() {
+  const formRef = useRef<HTMLFormElement | null>(null);
+
+  const [formData, setFormData] = useState({
+    user_name: "",
+    user_email: "",
+    user_company: "",
+  });
+
+  const handleClick = () => {
+  if (!formRef.current) return;
+
+  // 1️⃣ Primero leer los valores del formulario
+  const data = new FormData(formRef.current);
+  const newFormData = {
+    user_name: (data.get("user_name") as string) || "",
+    user_email: (data.get("user_email") as string) || "",
+    user_company: (data.get("user_company") as string) || "",
+  };
+
+  // 2️⃣ Ahora validar los datos leídos
+  if (
+    !newFormData.user_name.trim() ||
+    !newFormData.user_email.trim() ||
+    !newFormData.user_company.trim()
+  ) {
+    toast("⚠️ Por favor completa todos los campos.");
+    return;
+  }
+
+  // 3️⃣ Validar el email
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(newFormData.user_email)) {
+    toast("⚠️ Por favor ingresa un correo electrónico válido.");
+    return;
+  }
+
+  // 4️⃣ Guardar en el estado
+  setFormData(newFormData);
+
+  // 5️⃣ Enviar con EmailJS
+  emailjs
+    .sendForm(
+      process.env.NEXT_PUBLIC_SERVICES || "",
+      process.env.NEXT_PUBLIC_TEMPLATE || "",
+      formRef.current,
+      process.env.NEXT_PUBLIC_PUBLIC_KEY || "",
+    )
+    .then(
+      (result) => {
+        console.log("✅ Email enviado:", result.text);
+        toast.success("¡Mensaje enviado con éxito!");
+        formRef.current?.reset();
+      },
+      (error) => {   
+        toast.error("Hubo un error al enviar el mensaje. Intenta nuevamente.");
+      }
+    );
+};
+
   const benefits = [
-    { icon: FaCheck, text: '14 días gratis' },
-    { icon: FaCheck, text: 'Sin tarjeta de crédito' },
-    { icon: FaCheck, text: 'Cancela cuando quieras' },
+    { icon: FaCheck, text: "14 días gratis" },
+    { icon: FaCheck, text: "Sin tarjeta de crédito" },
+    { icon: FaCheck, text: "Cancela cuando quieras" },
   ];
 
   return (
@@ -16,23 +80,24 @@ export function CTA() {
       id="contact"
       className="relative overflow-hidden py-24 bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950"
     >
-      {/* Light effect */}
+      {/* --- Light background effects --- */}
       <div className="absolute inset-0">
         <motion.div
           animate={{ opacity: [0.05, 0.12, 0.05], scale: [1, 1.1, 1] }}
-          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
           className="absolute top-1/3 -left-20 w-[500px] h-[500px] bg-blue-600/30 rounded-full blur-3xl"
         />
         <motion.div
           animate={{ opacity: [0.05, 0.15, 0.05], scale: [1.1, 0.9, 1.1] }}
-          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
           className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-blue-400/20 rounded-full blur-3xl"
         />
       </div>
 
+      {/* --- Content --- */}
       <div className="container mx-auto px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* LEFT SIDE: Text + Benefits */}
+          {/* LEFT SIDE: Text */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -52,7 +117,8 @@ export function CTA() {
             </h2>
 
             <p className="text-lg text-gray-300 mb-10 leading-relaxed">
-              Ahorra tiempo, mejora la productividad y lleva tus recursos humanos al siguiente nivel.
+              Ahorra tiempo, mejora la productividad y lleva tus recursos
+              humanos al siguiente nivel.
             </p>
 
             <div className="flex flex-wrap gap-6">
@@ -67,7 +133,7 @@ export function CTA() {
             </div>
           </motion.div>
 
-          {/* RIGHT SIDE: Form */}
+          {/* RIGHT SIDE: EmailJS Form */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -82,28 +148,45 @@ export function CTA() {
               Crea una cuenta en menos de 1 minuto. Sin compromiso.
             </p>
 
-            <div className="flex flex-col gap-4 mb-6">
-              <Input
-                placeholder="Nombre completo"
-                className="h-12 px-5 rounded-xl border border-gray-700/60 bg-gray-900/70 text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-blue-600 focus:border-blue-600"
-              />
-              <Input
-                placeholder="tu@email.com"
-                className="h-12 px-5 rounded-xl border border-gray-700/60 bg-gray-900/70 text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-blue-600 focus:border-blue-600"
-              />
-              <Input
-                placeholder="Empresa"
-                className="h-12 px-5 rounded-xl border border-gray-700/60 bg-gray-900/70 text-gray-100 placeholder:text-gray-400 focus:ring-2 focus:ring-blue-600 focus:border-blue-600"
-              />
-            </div>
+            <form ref={formRef}>
+              <div className="flex flex-col gap-4 mb-6">
+                <Input
+                  name="user_name"
+                  placeholder="Nombre completo"
+                  required
+                  className="h-12 px-5 rounded-xl border border-gray-700/60 bg-gray-900/70 
+                             text-gray-100 placeholder:text-gray-400 focus:ring-2 
+                             focus:ring-blue-600 focus:border-blue-600"
+                />
+                <Input
+                  name="user_email"
+                  type="email"
+                  placeholder="tu@email.com"
+                  required
+                  className="h-12 px-5 rounded-xl border border-gray-700/60 bg-gray-900/70 
+                             text-gray-100 placeholder:text-gray-400 focus:ring-2 
+                             focus:ring-blue-600 focus:border-blue-600"
+                />
+                <Input
+                  name="user_company"
+                  placeholder="Empresa"
+                  className="h-12 px-5 rounded-xl border border-gray-700/60 bg-gray-900/70 
+                             text-gray-100 placeholder:text-gray-400 focus:ring-2 
+                             focus:ring-blue-600 focus:border-blue-600"
+                />
+              </div>
 
-            <Button
-              size="lg"
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold h-12 rounded-xl shadow-lg hover:shadow-blue-700/30 transition-all cursor-pointer"
-            >
-              <FaRocket className="mr-2" />
-              Empezar ahora
-            </Button>
+              <Button
+                type="button"
+                size="lg"
+                onClick={handleClick}
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold h-12 
+                           rounded-xl shadow-lg hover:shadow-blue-700/30 transition-all cursor-pointer"
+              >
+                <FaRocket className="mr-2" />
+                Empezar ahora
+              </Button>
+            </form>
 
             <p className="text-sm text-gray-500 mt-4 text-center">
               Sin tarjeta requerida · Cancela en cualquier momento
