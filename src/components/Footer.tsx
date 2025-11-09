@@ -97,9 +97,9 @@ export function Footer() {
         {/* Contact Information Section */}
         <div className="grid md:grid-cols-3 gap-6 mb-12 text-sm">
           {[
-            { icon: FaEnvelope, text: 'contacto@rrhhportal.es' },
-            { icon: FaPhone, text: '+34 900 123 456' },
-            { icon: FaMapMarkerAlt, text: 'Madrid, España' },
+            { icon: FaEnvelope, text: 'contacto@msfissa.com' },
+            { icon: FaPhone, text: '+1 (849) 399-3353' },
+            { icon: FaMapMarkerAlt, text: 'Msf Infosistema, Santo Domingo' },
           ].map((item, i) => (
             <motion.div
               key={i}
@@ -118,7 +118,7 @@ export function Footer() {
         {/* Divider and Copyright */}
         <div className="border-t border-gray-800/20 mt-12 pt-6 text-center">
           <p className={`text-xs ${isDarkMode ? 'text-gray-500' : 'text-gray-600'} tracking-wide`}>
-            © 2025 RRHH Portal · Diseñado con ❤️ y tecnología en España
+            © 2025 RRHH Portal · Diseñado por Jose Roque
           </p>
         </div>
       </div>

@@ -1,7 +1,6 @@
 "use client";
 
 import { useTheme } from "./ui/themeMode"; // 👈 tu hook global
-import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
 import { Avatar, AvatarFallback } from './ui/avatar';
 import { motion } from 'motion/react';
@@ -26,60 +25,61 @@ export function Testimonials() {
 
   const testimonials = [
     {
-      name: 'Carlos Martínez',
-      role: 'Director de RRHH',
-      company: 'TechCorp SL',
+      name: 'Lucía Fernández',
+      role: 'Encargada de Recursos Humanos',
+      company: 'OfiPlus',
       content:
-        'Desde que implementamos este sistema, hemos reducido el tiempo de gestión de nóminas en un 70%. Absolutamente recomendable.',
+        'Llevamos unas semanas probando el sistema y ya notamos una gran diferencia. El control de asistencia es mucho más claro y fácil de usar.',
       rating: 5,
-      avatar: 'CM',
+      avatar: 'LF',
     },
     {
-      name: 'Laura Sánchez',
-      role: 'CEO',
-      company: 'Innovate Partners',
+      name: 'Andrés Pérez',
+      role: 'Gerente General',
+      company: 'ServiTech',
       content:
-        'La mejor inversión que hemos hecho. Nuestros empleados aman la app móvil y el proceso de solicitar vacaciones es ahora muy simple.',
+        'Nos encantó lo intuitiva que es la plataforma. El registro de entradas y salidas funciona perfecto y el equipo de soporte ha sido muy atento.',
       rating: 5,
-      avatar: 'LS',
+      avatar: 'AP',
     },
     {
-      name: 'Miguel Rodríguez',
-      role: 'Gerente de Operaciones',
-      company: 'Retail Plus',
+      name: 'María González',
+      role: 'Administradora',
+      company: 'Grupo Nova',
       content:
-        'Gestionar turnos de 200 empleados nunca fue tan fácil. El soporte técnico es excepcional, siempre están disponibles.',
-      rating: 5,
-      avatar: 'MR',
+        'Estamos en etapa de implementación y el proceso ha sido muy sencillo. La función de nómina automática promete ahorrarnos mucho tiempo.',
+      rating: 4,
+      avatar: 'MG',
     },
     {
-      name: 'Ana López',
-      role: 'Responsable de Talento',
-      company: 'Creative Studio',
+      name: 'José Ramírez',
+      role: 'Supervisor de Operaciones',
+      company: 'Logística 24',
       content:
-        'Los reportes y análisis nos han ayudado a identificar patrones de productividad. Una herramienta imprescindible.',
-      rating: 5,
-      avatar: 'AL',
+        'El sistema de horarios y permisos nos ha ayudado a organizarnos mejor. Todavía lo estamos explorando, pero pinta excelente.',
+      rating: 4,
+      avatar: 'JR',
     },
     {
-      name: 'David García',
-      role: 'Fundador',
-      company: 'StartUp Lab',
-      content:
-        'Como startup necesitábamos algo simple pero potente. Este sistema cumple con todo y el precio es muy competitivo.',
-      rating: 5,
-      avatar: 'DG',
-    },
-    {
-      name: 'Isabel Torres',
+      name: 'Elena Torres',
       role: 'Directora Administrativa',
-      company: 'Consulting Group',
+      company: 'Consultoría Atlas',
       content:
-        'La integración con nuestras otras herramientas fue perfecta. Ahorramos horas cada semana en tareas administrativas.',
+        'Probamos la app móvil con algunos empleados y la experiencia fue muy buena. Fácil de usar y con las funciones necesarias.',
       rating: 5,
-      avatar: 'IT',
+      avatar: 'ET',
+    },
+    {
+      name: 'Raúl Díaz',
+      role: 'Fundador',
+      company: 'RH Digital',
+      content:
+        'Estamos en fase de prueba, pero ya se nota que es una herramienta con mucho potencial. Esperamos ver las próximas actualizaciones.',
+      rating: 5,
+      avatar: 'RD',
     },
   ];
+
 
   return (
     <section
@@ -99,11 +99,12 @@ export function Testimonials() {
           className={`text-center max-w-3xl mx-auto mb-16 ${textColor}`}
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Más de 10,000 empresas confían en nosotros
+            Creciendo junto a empresas innovadoras
           </h2>
           <p className={`text-xl ${subTextColor}`}>
-            Descubre por qué somos la opción #1 para la gestión de RRHH
+            Cada semana más equipos comienzan a usar nuestro sistema para simplificar su gestión de personal.
           </p>
+
         </motion.div>
 
         {/* Testimonials Grid */}

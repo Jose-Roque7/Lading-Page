@@ -71,8 +71,7 @@ export function CTA() {
   };
 
   const benefits = [
-    { icon: FaCheck, text: "14 días gratis" },
-    { icon: FaCheck, text: "Sin tarjeta de crédito" },
+    { icon: FaCheck, text: "Compra en linea" },
     { icon: FaCheck, text: "Cancela cuando quieras" },
   ];
 
@@ -120,7 +119,7 @@ export function CTA() {
             <div className="flex items-center gap-3 mb-6">
               <HiSparkles className="w-8 h-8 text-blue-500" />
               <span className={`uppercase tracking-wider text-sm ${accentColor}`}>
-                Comienza gratis hoy
+                Comienza hoy
               </span>
             </div>
 
@@ -156,10 +155,10 @@ export function CTA() {
   } rounded-2xl p-10 border ${isDarkMode ? 'border-gray-700/60' : 'border-gray-300/60'} backdrop-blur-md`}
 >
   <h3 className={`text-2xl font-semibold ${isDarkMode ? "text-white" : "text-gray-900"} mb-4`}>
-    Empieza tu prueba gratuita
+    Empieza tu tu experiencia ahora
   </h3>
   <p className={`text-sm ${isDarkMode ? "text-gray-400" : "text-gray-600"} mb-8`}>
-    Crea una cuenta en menos de 1 minuto. Sin compromiso.
+    Crea una cuenta en menos de 1 minuto. Sin interrupciones.
   </p>
 
   <form ref={formRef}>
@@ -196,7 +195,7 @@ export function CTA() {
   </form>
 
   <p className={`text-sm ${isDarkMode ? "text-gray-500" : "text-gray-600"} mt-4 text-center`}>
-    Sin tarjeta requerida · Cancela en cualquier momento
+    Paga en linea · Cancela en cualquier momento
   </p>
 </motion.div>
 

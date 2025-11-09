@@ -82,11 +82,11 @@ export function Header() {
                   <HiLogin className="w-5 h-5 mr-2" /> Iniciar sesión
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
                 </motion.a>
-
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white shadow-lg cursor-pointer">
-                  <FaRocket className="w-4 h-4 mr-2" /> Prueba gratis
-                </Button>
-
+                <a href="#pricing">
+                  <Button className="bg-blue-600 hover:bg-blue-700 text-white shadow-lg cursor-pointer">
+                    <FaRocket className="w-4 h-4 mr-2" /> Iniciar ahora
+                  </Button>
+                </a>
                 {/* Botón para alternar tema global */}
                 <button
                   onClick={toggleTheme}

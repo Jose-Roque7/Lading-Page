@@ -32,52 +32,58 @@ export function Pricing() {
 
   const plans = [
     {
-      name: 'Starter',
-      price: '49',
-      description: 'Perfecto para pequeñas empresas',
+      name: 'Básico',
+      price: '39',
+      description: 'Ideal para pequeñas empresas que buscan controlar asistencia y horarios',
       popular: false,
       features: [
         'Hasta 10 empleados',
-        'Control de asistencia',
+        'Registro de entrada y salida',
+        'Control de almuerzos y permisos',
         'Gestión de vacaciones',
-        'App móvil',
+        'Asignación de horarios',
+        'Perfil del empleado (horas trabajadas y salario estimado)',
+        'App móvil para empleados',
         'Soporte por email',
-        '5GB almacenamiento',
+        '5GB de almacenamiento',
       ],
     },
     {
-      name: 'Professional',
-      price: '99',
-      description: 'Ideal para empresas en crecimiento',
+      name: 'Profesional',
+      price: '89',
+      description: 'Perfecto para empresas en crecimiento que necesitan automatizar nómina y reportes',
       popular: true,
       features: [
         'Hasta 50 empleados',
-        'Todo en Starter, más:',
-        'Nóminas automáticas',
-        'Reportes avanzados',
+        'Todo en Básico, más:',
+        'Nómina automática integrada',
+        'Reportes detallados de asistencia y horas extras',
+        'Gestión avanzada de permisos y vacaciones',
+        'Panel administrativo completo',
+        'Integraciones con sistemas contables',
         'Soporte prioritario',
-        'Integraciones',
-        '50GB almacenamiento',
-        'API access',
+        '50GB de almacenamiento',
       ],
     },
     {
-      name: 'Enterprise',
+      name: 'Empresarial',
       price: 'Custom',
-      description: 'Para grandes organizaciones',
+      description: 'Solución completa para grandes organizaciones con necesidades personalizadas',
       popular: false,
       features: [
         'Empleados ilimitados',
-        'Todo en Professional, más:',
+        'Todo en Profesional, más:',
+        'Personalización total del sistema',
         'Gestor de cuenta dedicado',
         'Soporte 24/7',
-        'SLA garantizado',
-        'Personalización completa',
+        'Implementación y capacitación personalizada',
+        'API y conectores avanzados',
         'Almacenamiento ilimitado',
-        'Formación incluida',
+        'SLA garantizado',
       ],
     },
   ];
+
 
   return (
     <section
@@ -101,7 +107,7 @@ export function Pricing() {
             Planes flexibles para cada empresa
           </h2>
           <p className={`text-lg md:text-xl ${subTextColor}`}>
-            Sin costos ocultos. Cancela cuando quieras. Prueba gratuita por 14 días.
+            Sin costos ocultos. Cancela cuando quieras. Inicia ahora tu experiencia.
           </p>
         </motion.div>
 
@@ -131,8 +137,8 @@ export function Pricing() {
               <Card
                 className={`h-full overflow-hidden rounded-2xl backdrop-blur-sm transition-all duration-300 ${
                   plan.popular
-                    ? `${popularCardBg} text-white border ${hoverCardBg}`
-                    : `${cardBg} ${hoverCardBg}`
+                    ? `${popularCardBg} text-white border-gray-300 ${hoverCardBg}`
+                    : `${cardBg}  border-blue-300  ${hoverCardBg}`
                 }`}
               >
                 {/* Header */}
@@ -140,7 +146,7 @@ export function Pricing() {
                   className={`p-8 ${
                     plan.popular
                       ? 'bg-blue-700 text-white'
-                      : `${isDarkMode ? 'bg-gray-900/80 text-gray-100' : 'bg-gray-100/80 text-gray-900'}`
+                      : `${isDarkMode ? 'bg-gray-900/80 text-gray-100' : 'bg-blue-100 text-gray-900'}`
                     }`}
                 >
                   <h3 className="text-2xl font-semibold mb-2 text-center">{plan.name}</h3>
@@ -153,7 +159,7 @@ export function Pricing() {
                         <div className="text-4xl font-medium">Contactar</div>
                       ) : (
                         <>
-                          <span className="text-5xl font-bold">{plan.price}€</span>
+                          <span className="text-5xl font-bold">{plan.price}$US</span>
                           <span
                             className={`text-sm ${plan.popular ? "text-white" : isDarkMode ? "text-gray-300" : "text-gray-600"
                               }`}
@@ -181,19 +187,19 @@ export function Pricing() {
                   </ul>
 
                   {/* Button */}
-                  <Button
-                    size="lg"
-                    className={`w-full font-semibold transition-all duration-300 cursor-pointer ${
-                      plan.popular
-                        ? 'bg-white text-gray-900 hover:bg-gray-200 shadow-lg'
-                        : `border border-blue-500/40 text-blue-400 hover:border-blue-400 hover:text-blue-300`
-                    }`}
-                  >
-                    <FaRocket className="mr-2" />
-                    {plan.price === 'Custom'
-                      ? 'Contactar ventas'
-                      : 'Empezar prueba gratis'}
-                  </Button>
+                  <a href="#contact">
+                    <Button
+                      size="lg"
+                      className={`w-full font-semibold transition-all duration-300 cursor-pointer ${
+                        plan.popular
+                          ? 'border border-gray-400 bg-white text-gray-900 hover:bg-gray-200 shadow-lg'
+                          : `border border-blue-300 text-blue-400 hover:border-blue-700 hover:text-blue-700`
+                      }`}
+                    >
+                      <FaRocket className="mr-2" />
+                      Contactar ventas
+                    </Button>
+                  </a>
                 </CardContent>
               </Card>
             </motion.div>

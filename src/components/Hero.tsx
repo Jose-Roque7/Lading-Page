@@ -4,8 +4,8 @@ import { useTheme } from "./ui/themeMode"; // 👈 tu hook global
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { motion } from 'motion/react';
-import { FaRocket, FaPlay, FaStar, FaCheck, FaArrowRight } from 'react-icons/fa';
-import { HiSparkles, HiTrendingUp, HiUsers, HiLightningBolt } from 'react-icons/hi';
+import {  FaPlay, FaCheck, FaArrowRight } from 'react-icons/fa';
+import { HiSparkles, HiUsers, HiLightningBolt } from 'react-icons/hi';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 
 export function Hero() {
@@ -13,8 +13,8 @@ export function Hero() {
 
   const features = [
     { icon: HiLightningBolt, text: 'Configuración rápida' },
-    { icon: FaCheck, text: 'Sin tarjeta de crédito' },
-    { icon: HiUsers, text: '+10,000 empresas' }
+    { icon: FaCheck, text: 'Paga en linea' },
+    { icon: HiUsers, text: 'Empleados ilimitados' }
   ];
 
   const floatingElements = [
@@ -111,13 +111,12 @@ export function Hero() {
 
             {/* CTA */}
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }} className="flex flex-col sm:flex-row gap-4 mt-6 justify-center lg:justify-start">
-              <Button size="lg" className="bg-blue-500 hover:bg-blue-600 text-white h-16 px-8 shadow-lg shadow-blue-500/40 group">
-                <span>Empieza gratis</span>
-                <FaArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button variant="outline" size="lg" className={`h-16 px-8 ${textColor} border border-blue-500 hover:bg-blue-600/20`}>
-                <FaPlay className="mr-2" /> Ver demo
-              </Button>
+              <a href="#pricing">
+                <Button size="lg"  className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-medium h-11 cursor-pointer px-8 rounded-lg text-lg shadow-md hover:shadow-blue-500/30 transition-all duration-300">
+                  <span>Empieza ahora</span>
+                  <FaArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </a>
             </motion.div>
 
             {/* Features */}

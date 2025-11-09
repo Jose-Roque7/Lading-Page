@@ -8,13 +8,10 @@ import {
   FaDollarSign,
   FaMobileAlt,
   FaChartLine,
-  FaUsers,
   FaBell,
-  FaFileAlt,
-  FaShieldAlt,
-  FaCloud,
-  FaBolt,
-  FaBusinessTime
+  FaBusinessTime,
+  FaUserCircle,
+  FaEye
 } from 'react-icons/fa';
 import { useTheme } from './ui/themeMode'; // Importar el hook global
 
@@ -25,64 +22,50 @@ export function Features() {
     {
       icon: FaClock,
       title: 'Control de Asistencia',
-      description: 'Registro de entradas, salidas y pausas con geolocalización y reconocimiento facial opcional.'
+      description: 'Registra entrada, salida y almuerzo de forma sencilla desde la app o el navegador.'
     },
     {
       icon: FaCalendarAlt,
-      title: 'Gestión de Vacaciones',
-      description: 'Solicita y aprueba vacaciones y permisos con un flujo de trabajo automatizado.'
+      title: 'Permisos y Vacaciones',
+      description: 'Solicita y aprueba permisos o vacaciones fácilmente, con historial y seguimiento.'
     },
     {
       icon: FaDollarSign,
-      title: 'Nóminas Automáticas',
-      description: 'Cálculo automático de nóminas con deducciones, bonos y exportación a PDF.'
+      title: 'Gestión de Nómina',
+      description: 'Calcula automáticamente lo que cada empleado debe cobrar según sus horas trabajadas.'
     },
     {
       icon: FaBusinessTime,
-      title: 'Planificación de Horarios',
-      description: 'Crea y gestiona turnos de trabajo con alertas automáticas para cambios.'
+      title: 'Asignación de Horarios',
+      description: 'Crea y administra horarios personalizados para cada empleado o área.'
+    },
+    {
+      icon: FaUserCircle,
+      title: 'Perfil del Empleado',
+      description: 'Cada empleado puede ver sus horas trabajadas, asistencias y estimado de pago en tiempo real.'
     },
     {
       icon: FaMobileAlt,
       title: 'App Móvil',
-      description: 'Accede desde iOS y Android. Tus empleados siempre conectados.'
+      description: 'Disponible para Android e iOS. Los empleados pueden registrar asistencia desde cualquier lugar.'
     },
     {
       icon: FaChartLine,
-      title: 'Reportes y Análisis',
-      description: 'Dashboard con métricas en tiempo real sobre productividad y asistencia.'
-    },
-    {
-      icon: FaUsers,
-      title: 'Gestión de Empleados',
-      description: 'Base de datos completa con perfiles, documentos y historial laboral.'
+      title: 'Reportes Básicos',
+      description: 'Consulta reportes de asistencia y horas trabajadas por empleado o departamento.'
     },
     {
       icon: FaBell,
-      title: 'Notificaciones',
-      description: 'Alertas por email y push para aprobaciones, recordatorios y cambios.'
+      title: 'Notificaciones Automáticas',
+      description: 'Recibe alertas de entradas, salidas y solicitudes pendientes directamente en la app.'
     },
     {
-      icon: FaFileAlt,
-      title: 'Documentos Digitales',
-      description: 'Almacena contratos, recibos de nómina y documentos de forma segura.'
-    },
-    {
-      icon: FaShieldAlt,
-      title: 'Seguridad RGPD',
-      description: 'Cumplimiento total con normativas de protección de datos europeas.'
-    },
-    {
-      icon: FaCloud,
-      title: 'Cloud Hosting',
-      description: 'Infraestructura en la nube con backups automáticos y alta disponibilidad.'
-    },
-    {
-      icon: FaBolt,
-      title: 'Integraciones',
-      description: 'Conecta con Slack, Microsoft Teams, contabilidad y otras herramientas.'
+      icon: FaEye,
+      title: 'Empleados Activos',
+      description: 'Visualiza en tiempo real qué empleados están actualmente laborando según sus registros de entrada y salida.'
     }
   ];
+
 
   const isDarkMode = theme === 'dark';  // Detecta el modo oscuro
 
