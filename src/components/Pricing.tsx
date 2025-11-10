@@ -77,7 +77,7 @@ export function Pricing() {
         'Gestor de cuenta dedicado',
         'Soporte 24/7',
         'Implementación y capacitación personalizada',
-        'API y conectores avanzados',
+        'Conectores avanzados',
         'Almacenamiento ilimitado',
         'SLA garantizado',
       ],
