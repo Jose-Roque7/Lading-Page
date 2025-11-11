@@ -60,7 +60,6 @@ export function CTA() {
       )
       .then(
         (result) => {
-          console.log("✅ Email enviado:", result.text);
           toast.success("¡Mensaje enviado con éxito!");
           formRef.current?.reset();
         },
@@ -155,7 +154,7 @@ export function CTA() {
   } rounded-2xl p-10 border ${isDarkMode ? 'border-gray-700/60' : 'border-gray-300/60'} backdrop-blur-md`}
 >
   <h3 className={`text-2xl font-semibold ${isDarkMode ? "text-white" : "text-gray-900"} mb-4`}>
-    Empieza tu tu experiencia ahora
+    Solicita la prueba Demo
   </h3>
   <p className={`text-sm ${isDarkMode ? "text-gray-400" : "text-gray-600"} mb-8`}>
     Crea una cuenta en menos de 1 minuto. Sin interrupciones.

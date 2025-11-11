@@ -40,7 +40,8 @@ export function Footer() {
     { name: 'Precios', href: '#pricing' },
     { name: 'Contacto', href: '#contact' },
     { name: 'Privacidad', href: '#' },
-    { name: 'Términos', href: '#' }
+    { name: 'Términos', href: '#' },
+    { name: 'MSF Infosistema', href: 'https://www.msfissa.com/', target: '_blank' }
   ];
 
   return (
@@ -69,6 +70,7 @@ export function Footer() {
               <motion.li key={i} whileHover={{ scale: 1.1 }} className="cursor-pointer">
                 <a
                   href={link.href}
+                  target={link.target}
                   className={`transition-all duration-300 ${isDarkMode ? 'text-gray-300 hover:text-blue-400' : 'text-gray-800 hover:text-blue-600'}`}
                 >
                   {link.name}
@@ -98,7 +100,7 @@ export function Footer() {
         <div className="grid md:grid-cols-3 gap-6 mb-12 text-sm">
           {[
             { icon: FaEnvelope, text: 'contacto@msfissa.com' },
-            { icon: FaPhone, text: '+1 (849) 399-3353' },
+            { icon: FaPhone, text: '+1 (809) 540-4238' },
             { icon: FaMapMarkerAlt, text: 'Msf Infosistema, Santo Domingo' },
           ].map((item, i) => (
             <motion.div
